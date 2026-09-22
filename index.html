@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth overflow-x-hidden">
-
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
-    <title>Vishav Book Publication | Official Portal</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Vishv Publication - Genuine handwriting projects from home.">
+    <title>Vishv Publication - Handwriting Work From Home</title>
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <!-- Meta Pixel Code -->
     <script>
     !function(f,b,e,v,n,t,s)
@@ -16,480 +20,701 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1817615472553356'); // REPLACE WITH YOUR ACTUAL PIXEL ID
+    
+    // REPLACE 'YOUR_PIXEL_ID' WITH YOUR EXACT META PIXEL NUMBER
+    fbq('init', '1946831302644370'); 
     fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1817615472553356&ev=PageView&noscript=1"
+    src="https://www.facebook.com/tr?id=1946831302644370&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code -->
 
-    <script src="https://cdn.tailwindcss.com/"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        :root {
+            var(--primary-dark): #0B1120;
+            --primary: #1E293B;
+            --gold: #D97706;
+            --gold-hover: #B45309;
+            --gold-light: #FFF7ED;
+            --bg-body: #F8FAFC;
+            --white: #FFFFFF;
+            --text-dark: #334155;
+            --text-light: #64748B;
+            --success: #10B981;
+            
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 8px 15px rgba(0,0,0,0.08);
+            --shadow-lg: 0 15px 35px rgba(0,0,0,0.1);
+        }
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: { primary: '#1e3a8a', secondary: '#3b82f6', accent: '#10b981', telegram: '#0088cc', bg: '#f8fafc' },
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
-                    boxShadow: { 'soft': '0 10px 40px -10px rgba(0,0,0,0.08)' }
-                }
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            line-height: 1.6;
+            font-size: 13px; /* Clean, small mobile font */
+            overflow-x: hidden;
+            padding-bottom: 75px;
+        }
+
+        @media (min-width: 992px) { body { font-size: 14px; } }
+
+        a { text-decoration: none; transition: 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; height: auto; display: block; }
+
+        .container {
+            width: 100%; max-width: 1100px;
+            margin: 0 auto; padding: 0 20px;
+        }
+
+        section { padding: 50px 0; overflow: hidden; }
+        @media (min-width: 992px) { section { padding: 80px 0; } }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, var(--gold), var(--gold-hover));
+            color: var(--white);
+            padding: 10px 20px; border-radius: 6px;
+            font-weight: 700; font-size: 0.85rem; border: none; cursor: pointer;
+            box-shadow: 0 4px 10px rgba(217, 119, 6, 0.3); transition: 0.3s ease;
+            text-align: center;
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(217, 119, 6, 0.4); }
+
+        .btn-telegram {
+            background: #0088cc !important;
+            box-shadow: 0 4px 10px rgba(0, 136, 204, 0.3) !important;
+            color: #ffffff;
+            width: 100%;
+        }
+
+        /* --- SCROLLING ANIMATED CTA --- */
+        @keyframes pulse-btn {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 136, 204, 0.7); }
+            70% { transform: scale(1.03); box-shadow: 0 0 0 12px rgba(0, 136, 204, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 136, 204, 0); }
+        }
+        .scroll-animated-cta {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px);
+            padding: 12px 20px; box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+            z-index: 1000; display: flex; justify-content: center;
+        }
+        .scroll-animated-cta .btn {
+            animation: pulse-btn 2s infinite;
+            max-width: 400px;
+            font-size: 0.9rem;
+            padding: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- HEADER & MOBILE MENU --- */
+        header {
+            background: var(--white); height: 65px;
+            position: sticky; top: 0; z-index: 999;
+            box-shadow: var(--shadow-sm); display: flex; align-items: center;
+        }
+
+        .header-content {
+            display: flex; justify-content: space-between; align-items: center; width: 100%;
+        }
+
+        .logo-box { display: flex; align-items: center; gap: 8px; }
+        .logo-box img { height: 35px; border-radius: 6px; }
+        .brand-name { color: #0B1120; font-size: 1.1rem; font-weight: 800; line-height: 1.1; }
+        .brand-sub { color: var(--gold); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; }
+
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-dark); font-weight: 600; font-size: 0.85rem; }
+        .nav-links a:hover { color: var(--gold); }
+        
+        .mobile-menu-btn {
+            display: none; font-size: 1.5rem; color: #0B1120;
+            background: none; border: none; cursor: pointer;
+        }
+
+        @media (max-width: 991px) {
+            .mobile-menu-btn { display: block; }
+            .nav-links {
+                display: none; position: absolute; top: 65px; left: 0; right: 0;
+                background: var(--white); flex-direction: column; padding: 20px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-top: 1px solid #eee;
+            }
+            .nav-links.active { display: flex; }
+            .desktop-btn { display: none; }
+        }
+
+        /* --- HERO SECTION --- */
+        .hero { background: #0B1120; color: var(--white); padding: 40px 0; position: relative; }
+        
+        .hero::before {
+            content: ''; position: absolute; top: 0; right: 0;
+            width: 400px; height: 400px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(217, 119, 6, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .hero-grid {
+            display: grid; grid-template-columns: 1fr; gap: 30px; align-items: center; position: relative; z-index: 1;
+        }
+        @media (min-width: 992px) { .hero-grid { grid-template-columns: 1fr 1fr; gap: 50px; } }
+
+        .trust-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 5px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: 600;
+            color: var(--white); margin-bottom: 15px; letter-spacing: 0.5px;
+        }
+
+        .live-dot {
+            width: 6px; height: 6px; background-color: var(--success); border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { box-shadow: 0 0 0 5px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .hero h1 { font-size: clamp(1.6rem, 5vw, 2.8rem); font-weight: 800; line-height: 1.15; margin-bottom: 12px; }
+        .hero p { font-size: 0.9rem; color: #CBD5E1; margin-bottom: 20px; max-width: 500px; }
+
+        .hero-image-box {
+            background: rgba(255, 255, 255, 0.05); padding: 8px; border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);
+            margin: 0 auto; max-width: 320px; width: 100%;
+        }
+        @media (min-width: 992px) { .hero-image-box { max-width: 100%; } }
+        .hero-image-box img { width: 100%; border-radius: 8px; object-fit: contain; }
+
+        /* --- STATS COUNTERS --- */
+        .stats-wrapper {
+            background: var(--white); border-radius: 12px; padding: 20px;
+            box-shadow: var(--shadow-md); margin-top: -30px; position: relative; z-index: 10;
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; text-align: center;
+        }
+        @media (min-width: 768px) { .stats-wrapper { grid-template-columns: repeat(4, 1fr); padding: 25px; margin-top: -40px; } }
+        
+        .stat-item h4 { font-size: 1.6rem; color: var(--gold); font-weight: 800; line-height: 1; }
+        .stat-item p { font-size: 0.75rem; color: var(--text-light); text-transform: uppercase; font-weight: 600; margin-top: 4px; }
+
+        /* --- SECTION HEADERS --- */
+        .section-title { text-align: center; font-size: 1.5rem; color: #0B1120; font-weight: 800; margin-bottom: 5px; }
+        .section-subtitle { text-align: center; font-size: 0.85rem; color: var(--text-light); margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;}
+
+        /* --- TRUST CARDS & BENTO --- */
+        .grid-3 { display: grid; grid-template-columns: 1fr; gap: 15px; }
+        @media (min-width: 768px) { .grid-3 { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+
+        .card {
+            background: var(--white); padding: 25px 20px; border-radius: 12px; text-align: center;
+            border: 1px solid #E2E8F0; box-shadow: var(--shadow-sm); transition: 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--gold); }
+        .card-icon { font-size: 2rem; margin-bottom: 12px; }
+        .card h3 { color: #0B1120; font-size: 1.1rem; margin-bottom: 8px; }
+        .card p { color: var(--text-light); font-size: 0.85rem; }
+
+        /* --- LIVE RECENT PAYOUTS CHART --- */
+        .payout-container {
+            background: var(--white); border: 1px solid #E2E8F0; border-radius: 12px;
+            box-shadow: var(--shadow-md); max-width: 700px; margin: 0 auto;
+            position: relative; overflow: hidden; height: 350px;
+        }
+        .payout-container::before, .payout-container::after {
+            content: ''; position: absolute; left: 0; right: 0; height: 40px; z-index: 2; pointer-events: none;
+        }
+        .payout-container::before { top: 0; background: linear-gradient(to bottom, var(--white), transparent); }
+        .payout-container::after { bottom: 0; background: linear-gradient(to top, var(--white), transparent); }
+        
+        .payout-track { animation: scroll-vertical 25s linear infinite; }
+        .payout-track:hover { animation-play-state: paused; }
+        
+        @keyframes scroll-vertical {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+
+        .chart-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 20px; border-bottom: 1px solid #F1F5F9; font-size: 0.85rem;
+        }
+        .user-info { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--text-dark); }
+        .user-icon { width: 28px; height: 28px; background: var(--gold-light); color: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem;}
+        .amt { font-weight: 800; color: #0B1120; }
+        .status { color: var(--success); font-size: 0.7rem; font-weight: 700; display: flex; align-items: center; gap: 4px; justify-content: flex-end;}
+
+        /* --- NEW USER GUIDE --- */
+        .flow-chart { display: flex; flex-direction: column; gap: 12px; max-width: 600px; margin: 0 auto; }
+        .flow-step {
+            background: var(--white); border: 1px solid #E2E8F0; padding: 15px;
+            border-radius: 8px; display: flex; align-items: center; gap: 15px;
+            box-shadow: var(--shadow-sm); position: relative;
+        }
+        .flow-step::after {
+            content: '↓'; position: absolute; bottom: -16px; left: 50%;
+            transform: translateX(-50%); color: var(--gold); font-weight: bold; font-size: 1rem;
+        }
+        .flow-step:last-child::after { display: none; }
+        
+        .step-num {
+            background: linear-gradient(135deg, var(--gold), var(--gold-hover)); color: var(--white);
+            width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 0.9rem; flex-shrink: 0; box-shadow: 0 4px 8px rgba(217, 119, 6, 0.3);
+        }
+        .step-text h4 { font-size: 0.95rem; color: #0B1120; margin-bottom: 2px; }
+        .step-text p { font-size: 0.8rem; color: var(--text-light); }
+
+        @media (min-width: 768px) {
+            .flow-chart { flex-direction: row; max-width: 100%; justify-content: space-between; gap: 15px;}
+            .flow-step { flex-direction: column; text-align: center; flex: 1; padding: 20px 10px; }
+            .flow-step::after {
+                content: '→'; bottom: auto; right: -15px; top: 50%;
+                left: auto; transform: translateY(-50%);
             }
         }
-    </script>
-    
-    <style>
-        html, body { 
-            width: 100vw; 
-            max-width: 100%; 
-            overflow-x: hidden; 
-            -webkit-font-smoothing: antialiased;
-            background-color: #fcfcfd;
+
+        /* --- PRICING PLANS --- */
+        .plan-card {
+            background: var(--white); padding: 30px 20px; border-radius: 12px;
+            text-align: center; border: 1px solid #E2E8F0; transition: 0.3s;
         }
+        .plan-card:hover { box-shadow: var(--shadow-md); }
+        .plan-card.popular { border: 2px solid var(--gold); position: relative; box-shadow: var(--shadow-md); }
+        @media (min-width: 992px) { .plan-card.popular { transform: scale(1.05); } }
         
-        /* EXACT ORIGINAL BACKGROUND CSS RESTORED */
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background-image: url("image/mannubhai.png");
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 25% auto;
-            z-index: -2;
+        .badge {
+            background: #0B1120; color: var(--white); padding: 4px 12px;
+            border-radius: 50px; font-size: 0.7rem; font-weight: 700; display: inline-block; margin-bottom: 12px;
         }
-        @media (max-width: 450px) {
-            body::before { background-size: 80% auto; }
+        .plan-card.popular .badge { background: var(--gold); }
+        .plan-title { font-size: 1rem; color: var(--text-dark); font-weight: 600; margin-bottom: 5px; }
+        .plan-pages { font-size: 2rem; font-weight: 800; color: #0B1120; margin-bottom: 15px; }
+        
+        .plan-list { margin-bottom: 20px; text-align: left; }
+        .plan-item {
+            display: flex; justify-content: space-between; padding: 8px 0;
+            border-bottom: 1px dashed #E2E8F0; font-size: 0.85rem;
         }
-        body::after {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background-color: rgba(255, 255, 255, 0.6);
-            z-index: -1;
+        .plan-item span:last-child { font-weight: 700; color: var(--gold); }
+
+        /* --- FAQ --- */
+        .faq-box { max-width: 700px; margin: 0 auto; }
+        .faq-item { background: var(--white); border: 1px solid #E2E8F0; border-radius: 8px; margin-bottom: 10px; }
+        .faq-q {
+            padding: 15px 18px; font-size: 0.9rem; font-weight: 600; color: #0B1120;
+            cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+        }
+        .faq-icon { color: var(--gold); font-size: 1.2rem; transition: 0.3s; }
+        .faq-item.active .faq-icon { transform: rotate(45deg); }
+        .faq-a {
+            padding: 0 18px; max-height: 0; overflow: hidden; transition: 0.3s ease-out;
+            color: var(--text-light); font-size: 0.85rem;
+        }
+        .faq-item.active .faq-a { max-height: 300px; padding-bottom: 15px; }
+
+        /* --- FOOTER --- */
+        footer { background: #0B1120; color: #94A3B8; padding: 50px 0 20px; }
+        .footer-grid {
+            display: grid; grid-template-columns: 1fr; gap: 30px; margin-bottom: 30px;
+        }
+        @media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(4, 1fr); } }
+        .footer-col h3 { color: var(--white); font-size: 1.1rem; margin-bottom: 15px; font-weight: 700; }
+        .footer-col p, .footer-col a { color: #94A3B8; font-size: 0.85rem; margin-bottom: 10px; display: block; }
+        .footer-col a:hover { color: var(--gold); }
+        .footer-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+        .f-badge {
+            background: rgba(255,255,255,0.05); padding: 4px 8px;
+            border-radius: 4px; font-size: 0.75rem; border: 1px solid rgba(255,255,255,0.1);
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;
+            text-align: center; font-size: 0.8rem;
         }
 
-        .reveal { opacity: 0; transform: translateY(15px); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        /* --- SCROLL ANIMATIONS --- */
+        .reveal { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
-
-        .swiper-pagination-bullet { background: #cbd5e1; opacity: 1; transition: all 0.3s; }
-        .swiper-pagination-bullet-active { background: #1e3a8a; width: 16px; border-radius: 4px; }
-        .swiper-container-padding { padding-bottom: 30px !important; }
-
-        .toast-enter { transform: translate(-50%, -150%); opacity: 0; }
-        .toast-active { transform: translate(-50%, 0); opacity: 1; }
-
-        @keyframes scrollUp { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
-        .animate-scroll { animation: scrollUp 40s linear infinite; }
-        
-        .bookSlider .swiper-slide { width: 140px; height: 200px; transition: opacity 0.3s; }
-        .bookSlider .swiper-slide img { width: 100%; height: 100%; border-radius: 8px; object-fit: cover; box-shadow: 0 8px 20px rgba(0,0,0,0.15); border: 2px solid white; }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
     </style>
 </head>
+<body>
 
-<body class="font-sans text-slate-800">
-
-    <!-- Live Social Proof Toast -->
-    <div id="liveToast" class="fixed top-20 left-1/2 transform -translate-x-1/2 bg-white/95 backdrop-blur shadow-2xl border border-green-100 rounded-full py-2 px-4 flex items-center gap-3 z-[60] toast-enter transition-all duration-500 w-max max-w-[90vw] pointer-events-none">
-        <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-[10px] shrink-0">
-            <i class="fas fa-check"></i>
-        </div>
-        <p class="text-xs font-bold text-slate-700 whitespace-nowrap"><span id="toastName" class="text-slate-900">Pooja</span> <span id="toastAction" class="font-medium text-slate-500">just joined Telegram</span></p>
-    </div>
-    
-    <!-- Premium App Header -->
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 h-16 flex items-center shadow-sm">
-        <div class="w-full max-w-7xl mx-auto px-4 flex justify-between items-center">
-            <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
-                <img src="image/nehabooklogo.png" alt="Logo" class="h-10 w-auto object-contain">
-                <div class="flex flex-col">
-                    <span class="text-[9px] uppercase tracking-widest text-primary font-black leading-none mb-0.5">MSME Approved</span>
-                    <span class="text-sm font-bold text-slate-900 leading-none">Vishav Publication</span>
-                </div>
-            </div>
-            <div class="flex items-center gap-3">
-                <button onclick="trackAndRedirect('Nav_Join')" class="bg-telegram text-white px-4 py-2 rounded-lg text-xs font-bold shadow-md shadow-blue-500/30 flex items-center gap-2 hover:bg-blue-500 transition-colors">
-                    <i class="fab fa-telegram-plane text-sm"></i> <span class="hidden sm:inline">Join Channel</span>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <main class="pt-16 pb-24 md:pb-12 w-full overflow-hidden">
-        
-        <!-- Hero Section -->
-        <section class="py-6 px-4 max-w-7xl mx-auto w-full">
-            <div class="grid md:grid-cols-2 gap-6 items-center">
-                <div class="reveal active w-full">
-                    
-                    <!-- EXACT ORIGINAL SATYAMEV JAYATE HERO LOGO RESTORED -->
-                    <div class="flex items-center overflow-x-hidden mb-6">
-                        <img src="image/stiyamav%20jaite.png" class="w-full h-auto" alt="Writing">
-                    </div>
-                    
-                    <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 leading-tight mb-3 tracking-tight text-center md:text-left">
-                        WORK FROM HOME
-                    </h1>
-                    <!-- Added subtitle for project focus -->
-                    <h2 class="text-xl md:text-2xl font-bold text-primary mb-4 text-center md:text-left">📚 English Novels Handwriting Project Work</h2>
-                    
-                    <p class="text-sm md:text-base text-slate-600 mb-6 leading-relaxed text-center md:text-left">
-                        Work From Home for everyone. Write projects in books, get paid salary in advance. No experience needed.
-                    </p>
-
-                    <button onclick="trackAndRedirect('Hero_Join')" class="w-full md:w-auto px-8 py-4 bg-primary text-white text-base font-bold rounded-xl shadow-lg flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
-                        Apply via Telegram <i class="fab fa-telegram-plane text-xl"></i>
-                    </button>
-                </div>
-                
-                <!-- Hero Image -->
-                <div class="w-full reveal active mt-2 md:mt-0">
-                    <img src="photo-1455390582262-044cdead277a-auto-format-fit-crop-w-800-q-80.jpg" class="rounded-2xl shadow-lg w-full h-56 md:h-80 object-cover border-4 border-white" alt="Workspace">
-                </div>
-            </div>
-        </section>
-
-        <!-- Project Slider -->
-        <section class="py-10 bg-slate-100/80 border-y border-slate-200 reveal w-full backdrop-blur-sm">
-            <div class="max-w-7xl mx-auto w-full px-4 relative">
-                <div class="mb-8 text-center">
-                    <h2 class="text-2xl font-extrabold text-slate-900">Project Allocation Framework</h2>
-                    <p class="text-xs text-slate-500 mt-2 font-medium">Swipe to review official manuscript guidelines and compensation structures.</p>
-                    
-                    <!-- Added Note & Policies as requested -->
-                    <div class="mt-5 p-4 bg-white border border-blue-100 shadow-sm rounded-xl inline-block text-left max-w-2xl mx-auto w-full">
-                        <p class="text-sm font-bold text-slate-800 mb-2 flex items-center gap-2"><i class="fas fa-info-circle text-primary"></i> Important Note: Choose Project Work Plan</p>
-                        <div class="space-y-1">
-                            <p class="text-xs font-medium text-slate-600"><i class="fas fa-check-circle text-green-500 mr-1"></i> Registration fees will be Refunded After the Project Work is Completed.</p>
-                            <p class="text-xs font-medium text-slate-600"><i class="fas fa-check-circle text-green-500 mr-1"></i> After the Registration is Complete, 50% of the salary is Shared on the Customer's Account.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="swiper projectSlider swiper-container-padding w-full">
-                    <div class="swiper-wrapper">
-                        
-                        <!-- Project 1: BASIC -->
-                        <div class="swiper-slide w-[85vw] max-w-[320px]">
-                            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-soft h-full flex flex-col relative overflow-hidden">
-                                <span class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest">BASIC</span>
-                                <h3 class="text-xl font-black text-slate-900 mt-1">Project 1</h3>
-                                <div class="text-lg font-bold text-slate-500 my-3">
-                                    <i class="fas fa-file-alt text-primary mr-1"></i> 50 Pages Book
-                                    <div class="text-xs text-slate-400 mt-1 block">Front and Back 100</div>
-                                </div>
-                                <ul class="text-sm font-medium text-slate-600 space-y-3 mb-6 flex-grow">
-                                    <li class="flex items-center justify-between border-b border-slate-50 pb-2">
-                                        <span class="text-slate-500">Timing Duration:</span>
-                                        <span class="font-bold text-slate-800">7 Days</span>
-                                    </li>
-                                    <li class="flex items-center justify-between border-b border-slate-50 pb-2">
-                                        <span class="text-slate-500">Salary Amount:</span>
-                                        <span class="font-bold text-slate-800">₹25,000</span>
-                                    </li>
-                                    <li class="flex items-center justify-between border-b border-slate-50 pb-2">
-                                        <span class="text-slate-500">Registration Fees:</span>
-                                        <span class="font-bold text-accent">₹499</span>
-                                    </li>
-                                    <li class="flex items-center justify-between border-b border-slate-50 pb-2">
-                                        <span class="text-slate-500">Daily Earning:</span>
-                                        <span class="font-bold text-slate-800">₹3,000+</span>
-                                    </li>
-                                    <li class="flex items-center justify-between pb-2">
-                                        <span class="text-slate-500">Weekly Earning:</span>
-                                        <span class="font-bold text-slate-800">₹18,000+</span>
-                                    </li>
-                                </ul>
-                                <button onclick="trackAndRedirect('Proj_1')" class="w-full py-3.5 bg-telegram text-white text-sm font-bold rounded-xl flex items-center justify-center gap-2 shadow-md hover:bg-blue-500 transition-colors">
-                                    <i class="fab fa-telegram-plane"></i> Select via Telegram
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Project 2: MOST POPULAR -->
-                        <div class="swiper-slide w-[85vw] max-w-[320px]">
-                            <div class="bg-primary rounded-2xl p-6 shadow-xl border-2 border-primary h-full flex flex-col relative overflow-hidden">
-                                <div class="absolute top-0 right-6 bg-accent text-[10px] font-bold text-white px-3 py-1.5 rounded-b-lg uppercase tracking-wider">MOST POPULAR</div>
-                                <span class="text-[10px] font-extrabold text-blue-300 uppercase tracking-widest">STANDARD</span>
-                                <h3 class="text-xl font-black text-white mt-1">Project 2</h3>
-                                <div class="text-lg font-bold text-blue-100 my-3">
-                                    <i class="fas fa-file-alt text-accent mr-1"></i> 90 Pages Book
-                                    <div class="text-xs text-blue-200 mt-1 block">Front and Back 180</div>
-                                </div>
-                                <ul class="text-sm font-medium text-blue-100 space-y-3 mb-6 flex-grow">
-                                    <li class="flex items-center justify-between border-b border-blue-800/50 pb-2">
-                                        <span class="text-blue-200">Timing Duration:</span>
-                                        <span class="font-bold text-white">10 Days</span>
-                                    </li>
-                                    <li class="flex items-center justify-between border-b border-blue-800/50 pb-2">
-                                        <span class="text-blue-200">Salary Amount:</span>
-                                        <span class="font-bold text-white">₹30,000</span>
-                                    </li>
-                                    <li class="flex items-center justify-between border-b border-blue-800/50 pb-2">
-                                        <span class="text-blue-200">Registration Fees:</span>
-                                        <span class="font-bold text-accent">₹899</span>
-                                    </li>
-                                    <li class="flex items-center justify-between border-b border-blue-800/50 pb-2">
-                                        <span class="text-blue-200">Daily Earning:</span>
-                                        <span class="font-bold text-white">₹5,000+</span>
-                                    </li>
-                                    <li class="flex items-center justify-between pb-2">
-                                        <span class="text-blue-200">Weekly Earning:</span>
-                                        <span class="font-bold text-white">₹30,000+</span>
-                                    </li>
-                                </ul>
-                                <button onclick="trackAndRedirect('Proj_2')" class="w-full py-3.5 bg-white text-telegram text-sm font-bold rounded-xl flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-transform">
-                                    <i class="fab fa-telegram-plane"></i> Select via Telegram
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Project 3: EXPERT -->
-                        <div class="swiper-slide w-[85vw] max-w-[320px]">
-                            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-soft h-full flex flex-col relative overflow-hidden">
-                                <span class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest">EXPERT</span>
-                                <h3 class="text-xl font-black text-slate-900 mt-1">Project 3</h3>
-                                <div class="text-lg font-bold text-slate-500 my-3">
-                                    <i class="fas fa-file-alt text-primary mr-1"></i> 120 Pages Book
-                                    <div class="text-xs text-slate-400 mt-1 block">Front and Back 240</div>
-                                </div>
-                                <ul class="text-sm font-medium text-slate-600 space-y-3 mb-6 flex-grow">
-                                    <li class="flex items-center justify-between border-b border-slate-50 pb-2">
-                                        <span class="text-slate-500">Timing Duration:</span>
-                                        <span class="font-bold text-slate-800">15 Days</span>
-                                    </li>
-                                    <li class="flex items-center justify-between border-b border-slate-50 pb-2">
-                                        <span class="text-slate-500">Salary Amount:</span>
-                                        <span class="font-bold text-slate-800">₹45,000</span>
-                                    </li>
-                                    <li class="flex items-center justify-between border-b border-slate-50 pb-2">
-                                        <span class="text-slate-500">Registration Fees:</span>
-                                        <span class="font-bold text-accent">₹1299</span>
-                                    </li>
-                                    <li class="flex items-center justify-between border-b border-slate-50 pb-2">
-                                        <span class="text-slate-500">Daily Earning:</span>
-                                        <span class="font-bold text-slate-800">₹7,000+</span>
-                                    </li>
-                                    <li class="flex items-center justify-between pb-2">
-                                        <span class="text-slate-500">Weekly Earning:</span>
-                                        <span class="font-bold text-slate-800">₹50,000+</span>
-                                    </li>
-                                </ul>
-                                <button onclick="trackAndRedirect('Proj_3')" class="w-full py-3.5 bg-telegram text-white text-sm font-bold rounded-xl flex items-center justify-center gap-2 shadow-md hover:bg-blue-500 transition-colors">
-                                    <i class="fab fa-telegram-plane"></i> Select via Telegram
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-pagination mt-4"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Trust Badges & Sliders (Videos & Certs) -->
-        <section class="py-10 px-4 max-w-7xl mx-auto space-y-12 reveal w-full backdrop-blur-sm bg-white/40">
-            
-            <!-- Grid Trust Badges -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-                <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-soft flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center"><i class="fas fa-lock text-primary"></i></div><div><h4 class="text-xs font-bold text-slate-900">100% Secure</h4><p class="text-[10px] text-slate-500">Data Safe</p></div></div>
-                <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-soft flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center"><i class="fas fa-undo text-accent"></i></div><div><h4 class="text-xs font-bold text-slate-900">Full Refund</h4><p class="text-[10px] text-slate-500">Reg. Fees</p></div></div>
-                <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-soft flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center"><i class="fas fa-certificate text-secondary"></i></div><div><h4 class="text-xs font-bold text-slate-900">ISO Certified</h4><p class="text-[10px] text-slate-500">Global Std</p></div></div>
-                <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-soft flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-sky-50 flex items-center justify-center"><i class="fas fa-headset text-telegram"></i></div><div><h4 class="text-xs font-bold text-slate-900">24/7 Support</h4><p class="text-[10px] text-slate-500">Live Help</p></div></div>
-            </div>
-
-            <!-- Video Swiper with Thumbnails -->
-            <div class="w-full relative">
-                <h2 class="text-lg font-extrabold text-slate-900 mb-4 px-2">Verified Testimonials</h2>
-                <div class="swiper mediaSlider w-full">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide w-[75vw] max-w-[280px]">
-                            <div class="bg-black rounded-xl overflow-hidden shadow-md">
-                                <video controls poster="photo-1522202176988-66273c2fd55f.jpg" class="w-full h-44 object-cover"><source src="image/video/1.mp4" type="video/mp4"></video>
-                            </div>
-                        </div>
-                        <div class="swiper-slide w-[75vw] max-w-[280px]">
-                            <div class="bg-black rounded-xl overflow-hidden shadow-md">
-                                <video controls poster="image/seller-img.jpg" class="w-full h-44 object-cover"><source src="image/video/2.mp4" type="video/mp4"></video>
-                            </div>
-                        </div>
-                        <div class="swiper-slide w-[75vw] max-w-[280px]">
-                            <div class="bg-black rounded-xl overflow-hidden shadow-md">
-                                <video controls poster="photo-1455390582262-044cdead277a-auto-format-fit-crop-w-800-q-80.jpg" class="w-full h-44 object-cover"><source src="https://vishavbookpublication.com/image/video/video-3.mp4" type="video/mp4"></video>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Certificate Swiper -->
-            <div class="w-full relative">
-                <h2 class="text-lg font-extrabold text-slate-900 mb-4 px-2">Official Documents</h2>
-                <div class="swiper certSlider w-full">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide w-[45vw] max-w-[180px]">
-                            <img src="../vishavbookpublication.com/image/GlobalBooksPublication%20(1).jpeg" class="w-full h-auto rounded-lg border border-slate-200 shadow-sm" onerror="this.style.display='none'">
-                        </div>
-                        <div class="swiper-slide w-[45vw] max-w-[180px]">
-                            <img src="../vishavbookpublication.com/image/GlobalBooksPublication%20(1).png" class="w-full h-auto rounded-lg border border-slate-200 shadow-sm" onerror="this.style.display='none'">
-                        </div>
-                        <div class="swiper-slide w-[45vw] max-w-[180px]">
-                            <img src="../vishavbookpublication.com/image/GlobalBooksPublication%20(3).jpeg" class="w-full h-auto rounded-lg border border-slate-200 shadow-sm" onerror="this.style.display='none'">
-                        </div>
-                        <div class="swiper-slide w-[45vw] max-w-[180px]">
-                            <img src="../vishavbookpublication.com/image/gbp.png" class="w-full h-auto rounded-lg border border-slate-200 shadow-sm" onerror="this.style.display='none'">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-
-        <!-- Book Slider & Reviews Grid -->
-        <section class="py-10 bg-white/60 border-t border-slate-200 reveal w-full backdrop-blur-md">
-            <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center w-full">
-                
-                <!-- 3D Book Swiper -->
-                <div class="w-full overflow-hidden">
-                    <h2 class="text-lg font-extrabold text-slate-900 text-center mb-6">Our Published Portfolio</h2>
-                    <div class="swiper bookSlider w-full py-4">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide"><img src="image/books/1.png" onerror="this.src='https://via.placeholder.com/200x300/1e3a8a/fff?text=Book'"></div>
-                            <div class="swiper-slide"><img src="image/books/2.png" onerror="this.src='https://via.placeholder.com/200x300/1e3a8a/fff?text=Book'"></div>
-                            <div class="swiper-slide"><img src="image/books/3.png" onerror="this.src='https://via.placeholder.com/200x300/1e3a8a/fff?text=Book'"></div>
-                            <div class="swiper-slide"><img src="image/books/4.png" onerror="this.src='https://via.placeholder.com/200x300/1e3a8a/fff?text=Book'"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Reviews Marquee -->
-                <div class="w-full h-[280px] overflow-hidden bg-white border border-slate-200 rounded-2xl p-4 relative shadow-inner">
-                    <div class="absolute top-0 left-0 w-full h-12 bg-gradient-to-b from-white to-transparent z-10"></div>
-                    <div class="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-white to-transparent z-10"></div>
-                    <div id="reviewBox" class="space-y-3 animate-scroll"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- EXACT ORIGINAL MAP CODE RESTORED -->
-        <div class="reveal w-full">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d202041.08389221638!2d72.87835265000001!3d19.081507449999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e1!3m2!1sen!2sin!4v1775471515551!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-
-    </main>
-    
-    <!-- Professional Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-8 px-6 pb-24 md:pb-8 w-full overflow-hidden">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
-            <div class="flex items-center gap-3">
-                <img src="image/stiyamav%20jaite.png" class="h-10 w-auto brightness-0 invert opacity-50" alt="Gov">
+    <header>
+        <div class="container header-content">
+            <div class="logo-box">
+                <img src="images/logo.jpeg" alt="vishv Publication Logo" onerror="this.src='https://placehold.co/100x100/1E293B/D97706?text=VP'">
                 <div>
-                    <span class="text-white text-sm font-bold block leading-tight mb-1">VISHAV BOOK PUBLICATION PVT. LTD.</span>
-                    <span class="text-[10px] tracking-wider uppercase">ISO 9001:2015 Certified Work From Home</span>
+                    <div class="brand-name">vishv Publication</div>
+                    <div class="brand-sub">Trusted Handwriting Work</div>
                 </div>
             </div>
-            <div class="flex gap-6 text-xs uppercase tracking-wider font-bold">
-                <a href="#" class="hover:text-white transition-colors">Privacy</a>
-                <a href="#" class="hover:text-white transition-colors">Terms</a>
-                <span>© 2024</span>
+            
+            <button class="mobile-menu-btn" id="menuBtn">☰</button>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="#guide">How to Start</a>
+                <a href="#pricing">Salary Plans</a>
+                <a href="#faq">FAQ</a>
+                <div style="display: flex; gap: 10px;">
+                    <a href="https://t.me/+jQOfJExQEiQ1ODFl" target="_blank" class="btn btn-telegram desktop-btn" onclick="fbq('track', 'Contact');">Join Telegram</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text reveal">
+                <div class="trust-badge">
+                    <span class="live-dot"></span> MSME Approved MSME • Active
+                </div>
+
+                <h1>Earn Money From Home by Handwriting</h1>
+                <p>Turn your good handwriting into a steady income. This is a simple, genuine work-from-home opportunity perfect for students, housewives, and anyone looking for extra money.</p>
+
+                <div style="margin-top: 20px; max-width: 300px;">
+                    <a href="https://t.me/+jQOfJExQEiQ1ODFl" target="_blank" class="btn btn-telegram" onclick="fbq('track', 'Contact');">
+                        Join Our Telegram Channel
+                    </a>
+                </div>
             </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="stats-wrapper reveal delay-2">
+            <div class="stat-item">
+                <h4 class="counter" data-target="2500">0</h4>
+                <p>Active Workers</p>
+            </div>
+            <div class="stat-item">
+                <h4 class="counter" data-target="18000">0</h4>
+                <p>Projects Done</p>
+            </div>
+            <div class="stat-item">
+                <h4>₹<span class="counter" data-target="75">0</span>K</h4>
+                <p>Avg Monthly Salary</p>
+            </div>
+            <div class="stat-item">
+                <h4><span class="counter" data-target="100">0</span>%</h4>
+                <p>Genuine Payouts</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="container" style="padding-top: 60px;">
+        <div class="section-title reveal">Is This Genuine?</div>
+        <div class="section-subtitle reveal">Yes. We provide safe and reliable work for everyone.</div>
+        
+        <div class="grid-3">
+            <div class="card reveal">
+                <div class="card-icon">🏛️</div>
+                <h3>MSME Approved</h3>
+                <p>We are a fully registered MSME company working safely and transparently since 2018.</p>
+            </div>
+            <div class="card reveal delay-1">
+                <div class="card-icon">✍️</div>
+                <h3>Very Easy Work</h3>
+                <p>Just copy text from your phone to paper. You do not need any special computer skills.</p>
+            </div>
+            <div class="card reveal delay-2">
+                <div class="card-icon">🏦</div>
+                <h3>Direct Bank Payment</h3>
+                <p>Your earned salary is sent directly to your bank account every single week. Safe and fast.</p>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: var(--gold-light);">
+        <div class="container">
+            <div class="section-title reveal">Recent Salary Transfers</div>
+            <div class="section-subtitle reveal">Live tracking of our latest weekly payments to workers.</div>
+            
+            <div class="payout-container reveal delay-1">
+                <div class="payout-track" id="payoutTrack">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="guide">
+        <div class="container" style="padding-top: 60px;">
+            <div class="section-title reveal">New User Guide</div>
+            <div class="section-subtitle reveal">Follow this simple step-by-step chart to get your first payment.</div>
+            
+            <div class="flow-chart">
+                <div class="flow-step reveal">
+                    <div class="step-num">1</div>
+                    <div class="step-text">
+                        <h4>Join Channel</h4>
+                        <p>Click our link to join the official Telegram channel.</p>
+                    </div>
+                </div>
+                <div class="flow-step reveal delay-1">
+                    <div class="step-num">2</div>
+                    <div class="step-text">
+                        <h4>Register</h4>
+                        <p>Pay the simple fee to get your verified ID.</p>
+                    </div>
+                </div>
+                <div class="flow-step reveal delay-2">
+                    <div class="step-num">3</div>
+                    <div class="step-text">
+                        <h4>Write Work</h4>
+                        <p>Copy the PDF files onto paper neatly.</p>
+                    </div>
+                </div>
+                <div class="flow-step reveal delay-1">
+                    <div class="step-num">4</div>
+                    <div class="step-text">
+                        <h4>Send Photo</h4>
+                        <p>Send clear photos of your written pages.</p>
+                    </div>
+                </div>
+                <div class="flow-step reveal">
+                    <div class="step-num">5</div>
+                    <div class="step-text">
+                        <h4>Get Paid</h4>
+                        <p>Salary arrives directly in your bank account!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" style="background: #F1F5F9;">
+        <div class="container">
+            <div class="section-title reveal">Salary Plans</div>
+            <div class="section-subtitle reveal">Choose a plan based on how many pages you can write daily.</div>
+            
+            <div class="grid-3">
+                <div class="plan-card reveal">
+                    <div class="badge">BASIC</div>
+                    <div class="plan-title">Starter Plan</div>
+                    <div class="plan-pages">50 Pages</div>
+                    <div class="plan-list">
+                        <div class="plan-item"><span>Daily Earning:</span> <span>₹3,000+</span></div>
+                        <div class="plan-item"><span>Weekly Earning:</span> <span>₹18,000+</span></div>
+                        <div class="plan-item"><span>Monthly Earning:</span> <span>₹72,000+</span></div>
+                    </div>
+                    <a href="https://t.me/+jQOfJExQEiQ1ODFl" target="_blank" class="btn btn-telegram" onclick="fbq('track', 'Contact');">Select via Telegram</a>
+                </div>
+
+                <div class="plan-card popular reveal delay-1">
+                    <div class="badge">MOST POPULAR</div>
+                    <div class="plan-title">Standard Plan</div>
+                    <div class="plan-pages">90 Pages</div>
+                    <div class="plan-list">
+                        <div class="plan-item"><span>Daily Earning:</span> <span>₹5,000+</span></div>
+                        <div class="plan-item"><span>Weekly Earning:</span> <span>₹30,000+</span></div>
+                        <div class="plan-item"><span>Monthly Earning:</span> <span>₹1,20,000+</span></div>
+                    </div>
+                    <a href="https://t.me/+jQOfJExQEiQ1ODFl" target="_blank" class="btn btn-telegram" onclick="fbq('track', 'Contact');">Select via Telegram</a>
+                </div>
+
+                <div class="plan-card reveal delay-2">
+                    <div class="badge">EXPERT</div>
+                    <div class="plan-title">Premium Plan</div>
+                    <div class="plan-pages">120 Pages</div>
+                    <div class="plan-list">
+                        <div class="plan-item"><span>Daily Earning:</span> <span>₹7,000+</span></div>
+                        <div class="plan-item"><span>Weekly Earning:</span> <span>₹50,000+</span></div>
+                        <div class="plan-item"><span>Monthly Earning:</span> <span>₹2,00,000+</span></div>
+                    </div>
+                    <a href="https://t.me/+jQOfJExQEiQ1ODFl" target="_blank" class="btn btn-telegram" onclick="fbq('track', 'Contact');">Select via Telegram</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="container" style="padding-bottom: 60px;">
+        <div class="section-title reveal">Questions People Ask</div>
+        <div class="section-subtitle reveal">Clear answers to help you start your work without confusion.</div>
+        
+        <div class="faq-box reveal delay-1">
+            <div class="faq-item">
+                <div class="faq-q">Do I have to pay a registration fee? <span class="faq-icon">+</span></div>
+                <div class="faq-a"><p>Yes, there is a registration fee required to join, verify your ID, and get your first writing assignment. Please contact us on Telegram to ask about the exact fee amount.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Who can do this work? <span class="faq-icon">+</span></div>
+                <div class="faq-a"><p>Anyone! Students, housewives, or retired people. You do not need any past experience. You only need to have neat handwriting that is easy to read.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">When do I get my salary? <span class="faq-icon">+</span></div>
+                <div class="faq-a"><p>We pay salaries every week. After you submit your written pages, we check them within 24 to 48 hours, and then send the money straight to your bank account.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Is this a real company? <span class="faq-icon">+</span></div>
+                <div class="faq-a"><p>Yes, vishv Publication is a genuine, MSME-approved, and MSME-registered company. We have been giving work and paying salaries since 2018.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>vishv Publication</h3>
+                <p>Helping people earn real money from home through genuine handwriting projects since 2018.</p>
+                <div class="footer-badges">
+                    <span class="f-badge">🏛️ MSME Approved</span>
+                    <span class="f-badge">📜 MSME Registered</span>
+                    <span class="f-badge">✅ ISO 9001:2015</span>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Important Links</h3>
+                <a href="#guide">How to Start</a>
+                <a href="#pricing">Salary Plans</a>
+                <a href="#faq">Help & Questions</a>
+            </div>
+            <div class="footer-col">
+                <h3>Company Rules</h3>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Refund Policy</a>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <p>📧 contact@vishvpublication.com</p>
+                <p>📱 Support: Telegram Only</p>
+                <div style="margin-top: 10px;">
+                    <a href="https://t.me/+jQOfJExQEiQ1ODFl" target="_blank" class="btn btn-telegram" onclick="fbq('track', 'Contact');" style="padding: 8px 16px; font-size: 0.8rem;">Join Telegram Channel</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2018 - 2026 vishv Publication. All Rights Reserved.</p>
+            <p style="margin-top: 5px; opacity: 0.5;">Registered under Companies Act | GST Registered | PAN Verified Entity</p>
         </div>
     </footer>
 
-    <!-- Glowing Sticky CTA (Mobile) -->
-    <div class="fixed bottom-0 left-0 w-full p-3 bg-white/95 backdrop-blur-md border-t border-slate-200 z-[100] md:hidden shadow-[0_-10px_20px_rgba(0,0,0,0.08)]">
-        <button onclick="trackAndRedirect('Sticky_CTA')" class="w-full py-3.5 bg-telegram text-white text-base font-bold rounded-xl shadow-lg shadow-blue-500/30 flex justify-center items-center gap-2 active:scale-95 transition-transform">
-            <i class="fab fa-telegram-plane text-xl"></i> Official Telegram Support
-        </button>
+    <!-- Animated Sticky Bottom CTA -->
+    <div class="scroll-animated-cta">
+        <a href="https://t.me/+jQOfJExQEiQ1ODFl" target="_blank" class="btn btn-telegram" onclick="fbq('track', 'Contact');">
+            👉 Join Our Telegram Channel Now
+        </a>
     </div>
-    
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
     <script>
-        // 1. Pixel Tracking & Redirect
-        function trackAndRedirect(btnId) {
-            if (typeof fbq === 'function') {
-                fbq('track', 'Lead', { content_category: btnId });
-            }
-            setTimeout(() => { window.location.href = 'https://t.me/vishav_publication'; }, 300);
-        }
+        // 1. Mobile Menu Logic
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
 
-        // 2. Scroll Animation Init
-        window.addEventListener('scroll', () => {
-            const reveals = document.querySelectorAll('.reveal');
-            const wh = window.innerHeight;
-            reveals.forEach(r => {
-                if (r.getBoundingClientRect().top < wh - 30) r.classList.add('active');
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuBtn.textContent = '☰';
             });
         });
 
-        // 3. Robust Swiper Initializations
-        document.addEventListener('DOMContentLoaded', () => {
-            // Project Slider
-            new Swiper(".projectSlider", {
-                slidesPerView: "auto",
-                spaceBetween: 16,
-                centeredSlides: true,
-                loop: false, 
-                pagination: { el: ".swiper-pagination", clickable: true },
-                autoplay: { delay: 4000, disableOnInteraction: true },
-                initialSlide: 1 
+        // 2. Dynamic Payout Generator
+        const payoutTrack = document.getElementById('payoutTrack');
+        const firstNames = ['P***', 'R***', 'A***', 'S***', 'V***', 'M***', 'K***', 'N***', 'D***', 'T***', 'H***', 'J***'];
+        const lastInitials = ['S.', 'K.', 'P.', 'M.', 'D.', 'T.', 'R.', 'J.', 'L.', 'B.', 'G.', 'N.'];
+        const locations = ['Hyderabad', 'Chennai', 'Bangalore', 'Kochi', 'Trivandrum', 'Coimbatore', 'Mysore', 'Mumbai', 'Delhi', 'Pune'];
+        const amounts = ['₹12,000', '₹14,500', '₹16,800', '₹19,500', '₹22,000', '₹25,500', '₹29,000', '₹33,200', '₹37,500', '₹40,000'];
+        
+        let payoutHTML = '';
+        for(let i = 0; i < 40; i++) {
+            let fName = firstNames[Math.floor(Math.random() * firstNames.length)];
+            let lName = lastInitials[Math.floor(Math.random() * lastInitials.length)];
+            let loc = locations[Math.floor(Math.random() * locations.length)];
+            let amt = amounts[Math.floor(Math.random() * amounts.length)];
+            let initial = fName.charAt(0);
+            
+            let statusText = Math.random() > 0.3 ? 'Paid Today' : 'Paid Yesterday';
+            
+            payoutHTML += `
+                <div class="chart-row">
+                    <div class="user-info">
+                        <div class="user-icon">${initial}</div> 
+                        ${fName} ${lName} (${loc})
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="amt">${amt}</div>
+                        <div class="status">
+                            <span style="color: #10B981; margin-right:3px;">✓</span> ${statusText}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        payoutTrack.innerHTML = payoutHTML + payoutHTML;
+
+        // 3. FAQ Logic
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const btn = item.querySelector('.faq-q');
+            btn.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                faqItems.forEach(faq => {
+                    faq.classList.remove('active');
+                    faq.querySelector('.faq-icon').textContent = '+';
+                });
+                if (!isActive) {
+                    item.classList.add('active');
+                    item.querySelector('.faq-icon').textContent = '−';
+                }
             });
-
-            // Media & Cert Sliders
-            new Swiper(".mediaSlider", { slidesPerView: "auto", spaceBetween: 16, freeMode: true });
-            new Swiper(".certSlider", { slidesPerView: "auto", spaceBetween: 12, freeMode: true });
-
-            // 3D Books 
-            new Swiper(".bookSlider", {
-                effect: "coverflow", grabCursor: true, centeredSlides: true, slidesPerView: "auto", loop: true,
-                coverflowEffect: { rotate: 20, stretch: 0, depth: 150, modifier: 1, slideShadows: true },
-                autoplay: { delay: 2000, disableOnInteraction: false }
-            });
-
-            window.dispatchEvent(new Event('scroll'));
         });
 
-        // 4. Live Social Proof
-        const toastNames = ["Amit S.", "Neha V.", "Pooja K.", "Vikram", "Suresh M.", "Anjali", "Rohan", "Kavita D."];
-        const toastActions = ["joined the channel", "selected Standard Plan", "completed registration", "started writing"];
+        // 4. Scroll Animations & Counters
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
         
-        function showToast() {
-            const toast = document.getElementById('liveToast');
-            document.getElementById('toastName').textContent = toastNames[Math.floor(Math.random() * toastNames.length)];
-            document.getElementById('toastAction').textContent = toastActions[Math.floor(Math.random() * toastActions.length)];
-            
-            toast.classList.remove('toast-enter');
-            toast.classList.add('toast-active');
-            
-            setTimeout(() => {
-                toast.classList.remove('toast-active');
-                toast.classList.add('toast-enter');
-            }, 3500);
-        }
-        
-        setTimeout(() => {
-            showToast();
-            setInterval(showToast, 12000);
-        }, 2000);
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    
+                    const counters = entry.target.querySelectorAll('.counter');
+                    counters.forEach(counter => {
+                        if (!counter.hasAttribute('data-counted')) {
+                            counter.setAttribute('data-counted', 'true');
+                            const target = parseInt(counter.getAttribute('data-target'));
+                            const duration = 2000; 
+                            const increment = target / (duration / 16); 
+                            let current = 0;
+                            
+                            const updateCounter = () => {
+                                current += increment;
+                                if (current < target) {
+                                    counter.innerText = Math.floor(current).toLocaleString('en-IN');
+                                    requestAnimationFrame(updateCounter);
+                                } else {
+                                    counter.innerText = target.toLocaleString('en-IN') + (target > 100 ? '+' : '');
+                                }
+                            };
+                            updateCounter();
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
 
-        // 5. Automated Reviews
-        const revContainer = document.getElementById("reviewBox");
-        const revs = [
-            {n: "Aarav Singh", t: "Payments are processed strictly on time. Best remote project."},
-            {n: "Priya Verma", t: "Very professional workflow. Telegram support is instant."},
-            {n: "Neha Gupta", t: "Registration process was seamless. Great management."},
-            {n: "Rohan K.", t: "100% genuine operations. Working kit arrived quickly."},
-            {n: "Vikram M.", t: "Clear project guidelines and secure environment."}
-        ];
-        let html = '';
-        for(let i=0; i<12; i++) {
-            let r = revs[i % revs.length];
-            html += `<div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex gap-3"><div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-sm font-bold text-primary shrink-0 border border-blue-100">${r.n[0]}</div><div><p class="text-sm font-bold text-slate-800 leading-tight mb-1">${r.n}</p><p class="text-xs text-slate-500 leading-snug">${r.t}</p></div></div>`;
-        }
-        revContainer.innerHTML = html + html; 
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
+ 
