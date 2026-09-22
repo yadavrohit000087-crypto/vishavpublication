@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth overflow-x-hidden">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <title>Vishav Book Publication | Official Portal</title>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1817615472553356'); // REPLACE WITH YOUR ACTUAL PIXEL ID
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1817615472553356&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <script src="https://cdn.tailwindcss.com/"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { primary: '#1e3a8a', secondary: '#3b82f6', accent: '#10b981', telegram: '#0088cc', bg: '#f8fafc' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    boxShadow: { 'soft': '0 10px 40px -10px rgba(0,0,0,0.08)' }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        html, body { 
+            width: 100vw; 
+            max-width: 100%; 
+            overflow-x: hidden; 
+            -webkit-font-smoothing: antialiased;
+            background-color: #fcfcfd;
+        }
+        
+        /* EXACT ORIGINAL BACKGROUND CSS RESTORED */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: url("image/mannubhai.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 25% auto;
+            z-index: -2;
+        }
+        @media (max-width: 450px) {
+            body::before { background-size: 80% auto; }
+        }
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-color: rgba(255, 255, 255, 0.6);
+            z-index: -1;
+        }
+
+        .reveal { opacity: 0; transform: translateY(15px); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .swiper-pagination-bullet { background: #cbd5e1; opacity: 1; transition: all 0.3s; }
+        .swiper-pagination-bullet-active { background: #1e3a8a; width: 16px; border-radius: 4px; }
+        .swiper-container-padding { padding-bottom: 30px !important; }
+
+        .toast-enter { transform: translate(-50%, -150%); opacity: 0; }
+        .toast-active { transform: translate(-50%, 0); opacity: 1; }
+
+        @keyframes scrollUp { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
+        .animate-scroll { animation: scrollUp 40s linear infinite; }
+        
+        .bookSlider .swiper-slide { width: 140px; height: 200px; transition: opacity 0.3s; }
+        .bookSlider .swiper-slide img { width: 100%; height: 100%; border-radius: 8px; object-fit: cover; box-shadow: 0 8px 20px rgba(0,0,0,0.15); border: 2px solid white; }
+    </style>
+</head>
+
+<body class="font-sans text-slate-800">
+
+    <!-- Live Social Proof Toast -->
+    <div id="liveToast" class="fixed top-20 left-1/2 transform -translate-x-1/2 bg-white/95 backdrop-blur shadow-2xl border border-green-100 rounded-full py-2 px-4 flex items-center gap-3 z-[60] toast-enter transition-all duration-500 w-max max-w-[90vw] pointer-events-none">
+        <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-[10px] shrink-0">
+            <i class="fas fa-check"></i>
+        </div>
+        <p class="text-xs font-bold text-slate-700 whitespace-nowrap"><span id="toastName" class="text-slate-900">Pooja</span> <span id="toastAction" class="font-medium text-slate-500">just joined Telegram</span></p>
+    </div>
+    
+    <!-- Premium App Header -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 h-16 flex items-center shadow-sm">
+        <div class="w-full max-w-7xl mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                <img src="image/nehabooklogo.png" alt="Logo" class="h-10 w-auto object-contain">
+                <div class="flex flex-col">
+                    <span class="text-[9px] uppercase tracking-widest text-primary font-black leading-none mb-0.5">MSME Approved</span>
+                    <span class="text-sm font-bold text-slate-900 leading-none">Vishav Publication</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <button onclick="trackAndRedirect('Nav_Join')" class="bg-telegram text-white px-4 py-2 rounded-lg text-xs font-bold shadow-md shadow-blue-500/30 flex items-center gap-2 hover:bg-blue-500 transition-colors">
+                    <i class="fab fa-telegram-plane text-sm"></i> <span class="hidden sm:inline">Join Channel</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-16 pb-24 md:pb-12 w-full overflow-hidden">
+        
+        <!-- Hero Section -->
+        <section class="py-6 px-4 max-w-7xl mx-auto w-full">
+            <div class="grid md:grid-cols-2 gap-6 items-center">
+                <div class="reveal active w-full">
+                    
+                    <!-- EXACT ORIGINAL SATYAMEV JAYATE HERO LOGO RESTORED -->
+                    <div class="flex items-center overflow-x-hidden mb-6">
+                        <img src="image/stiyamav%20jaite.png" class="w-full h-auto" alt="Writing">
+                    </div>
+                    
+                    <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 leading-tight mb-3 tracking-tight text-center md:text-left">
+                        WORK FROM HOME
+                    </h1>
+                    <!-- Added subtitle for project focus -->
+                    <h2 class="text-xl md:text-2xl font-bold text-primary mb-4 text-center md:text-left">📚 English Novels Handwriting Project Work</h2>
+                    
+                    <p class="text-sm md:text-base text-slate-600 mb-6 leading-relaxed text-center md:text-left">
+                        Work From Home for everyone. Write projects in books, get paid salary in advance. No experience needed.
+                    </p>
+
+                    <button onclick="trackAndRedirect('Hero_Join')" class="w-full md:w-auto px-8 py-4 bg-primary text-white text-base font-bold rounded-xl shadow-lg flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
+                        Apply via Telegram <i class="fab fa-telegram-plane text-xl"></i>
+                    </button>
+                </div>
+                
+                <!-- Hero Image -->
+                <div class="w-full reveal active mt-2 md:mt-0">
+                    <img src="photo-1455390582262-044cdead277a-auto-format-fit-crop-w-800-q-80.jpg" class="rounded-2xl shadow-lg w-full h-56 md:h-80 object-cover border-4 border-white" alt="Workspace">
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Slider -->
+        <section class="py-10 bg-slate-100/80 border-y border-slate-200 reveal w-full backdrop-blur-sm">
+            <div class="max-w-7xl mx-auto w-full px-4 relative">
+                <div class="mb-8 text-center">
+                    <h2 class="text-2xl font-extrabold text-slate-900">Project Allocation Framework</h2>
+                    <p class="text-xs text-slate-500 mt-2 font-medium">Swipe to review official manuscript guidelines and compensation structures.</p>
+                    
+                    <!-- Added Note & Policies as requested -->
+                    <div class="mt-5 p-4 bg-white border border-blue-100 shadow-sm rounded-xl inline-block text-left max-w-2xl mx-auto w-full">
+                        <p class="text-sm font-bold text-slate-800 mb-2 flex items-center gap-2"><i class="fas fa-info-circle text-primary"></i> Important Note: Choose Project Work Plan</p>
+                        <div class="space-y-1">
+                            <p class="text-xs font-medium text-slate-600"><i class="fas fa-check-circle text-green-500 mr-1"></i> Registration fees will be Refunded After the Project Work is Completed.</p>
+                            <p class="text-xs font-medium text-slate-600"><i class="fas fa-check-circle text-green-500 mr-1"></i> After the Registration is Complete, 50% of the salary is Shared on the Customer's Account.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="swiper projectSlider swiper-container-padding w-full">
+                    <div class="swiper-wrapper">
+                        
+                        <!-- Project 1: BASIC -->
+                        <div class="swiper-slide w-[85vw] max-w-[320px]">
+                            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-soft h-full flex flex-col relative overflow-hidden">
+                                <span class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest">BASIC</span>
+                                <h3 class="text-xl font-black text-slate-900 mt-1">Project 1</h3>
+                                <div class="text-lg font-bold text-slate-500 my-3">
+                                    <i class="fas fa-file-alt text-primary mr-1"></i> 50 Pages Book
+                                    <div class="text-xs text-slate-400 mt-1 block">Front and Back 100</div>
+                                </div>
+                                <ul class="text-sm font-medium text-slate-600 space-y-3 mb-6 flex-grow">
+                                    <li class="flex items-center justify-between border-b border-slate-50 pb-2">
+                                        <span class="text-slate-500">Timing Duration:</span>
+                                        <span class="font-bold text-slate-800">7 Days</span>
+                                    </li>
+                                    <li class="flex items-center justify-between border-b border-slate-50 pb-2">
+                                        <span class="text-slate-500">Salary Amount:</span>
+                                        <span class="font-bold text-slate-800">₹25,000</span>
+                                    </li>
+                                    <li class="flex items-center justify-between border-b border-slate-50 pb-2">
+                                        <span class="text-slate-500">Registration Fees:</span>
+                                        <span class="font-bold text-accent">₹499</span>
+                                    </li>
+                                    <li class="flex items-center justify-between border-b border-slate-50 pb-2">
+                                        <span class="text-slate-500">Daily Earning:</span>
+                                        <span class="font-bold text-slate-800">₹3,000+</span>
+                                    </li>
+                                    <li class="flex items-center justify-between pb-2">
+                                        <span class="text-slate-500">Weekly Earning:</span>
+                                        <span class="font-bold text-slate-800">₹18,000+</span>
+                                    </li>
+                                </ul>
+                                <button onclick="trackAndRedirect('Proj_1')" class="w-full py-3.5 bg-telegram text-white text-sm font-bold rounded-xl flex items-center justify-center gap-2 shadow-md hover:bg-blue-500 transition-colors">
+                                    <i class="fab fa-telegram-plane"></i> Select via Telegram
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Project 2: MOST POPULAR -->
+                        <div class="swiper-slide w-[85vw] max-w-[320px]">
+                            <div class="bg-primary rounded-2xl p-6 shadow-xl border-2 border-primary h-full flex flex-col relative overflow-hidden">
+                                <div class="absolute top-0 right-6 bg-accent text-[10px] font-bold text-white px-3 py-1.5 rounded-b-lg uppercase tracking-wider">MOST POPULAR</div>
+                                <span class="text-[10px] font-extrabold text-blue-300 uppercase tracking-widest">STANDARD</span>
+                                <h3 class="text-xl font-black text-white mt-1">Project 2</h3>
+                                <div class="text-lg font-bold text-blue-100 my-3">
+                                    <i class="fas fa-file-alt text-accent mr-1"></i> 90 Pages Book
+                                    <div class="text-xs text-blue-200 mt-1 block">Front and Back 180</div>
+                                </div>
+                                <ul class="text-sm font-medium text-blue-100 space-y-3 mb-6 flex-grow">
+                                    <li class="flex items-center justify-between border-b border-blue-800/50 pb-2">
+                                        <span class="text-blue-200">Timing Duration:</span>
+                                        <span class="font-bold text-white">10 Days</span>
+                                    </li>
+                                    <li class="flex items-center justify-between border-b border-blue-800/50 pb-2">
+                                        <span class="text-blue-200">Salary Amount:</span>
+                                        <span class="font-bold text-white">₹30,000</span>
+                                    </li>
+                                    <li class="flex items-center justify-between border-b border-blue-800/50 pb-2">
+                                        <span class="text-blue-200">Registration Fees:</span>
+                                        <span class="font-bold text-accent">₹899</span>
+                                    </li>
+                                    <li class="flex items-center justify-between border-b border-blue-800/50 pb-2">
+                                        <span class="text-blue-200">Daily Earning:</span>
+                                        <span class="font-bold text-white">₹5,000+</span>
+                                    </li>
+                                    <li class="flex items-center justify-between pb-2">
+                                        <span class="text-blue-200">Weekly Earning:</span>
+                                        <span class="font-bold text-white">₹30,000+</span>
+                                    </li>
+                                </ul>
+                                <button onclick="trackAndRedirect('Proj_2')" class="w-full py-3.5 bg-white text-telegram text-sm font-bold rounded-xl flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-transform">
+                                    <i class="fab fa-telegram-plane"></i> Select via Telegram
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Project 3: EXPERT -->
+                        <div class="swiper-slide w-[85vw] max-w-[320px]">
+                            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-soft h-full flex flex-col relative overflow-hidden">
+                                <span class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest">EXPERT</span>
+                                <h3 class="text-xl font-black text-slate-900 mt-1">Project 3</h3>
+                                <div class="text-lg font-bold text-slate-500 my-3">
+                                    <i class="fas fa-file-alt text-primary mr-1"></i> 120 Pages Book
+                                    <div class="text-xs text-slate-400 mt-1 block">Front and Back 240</div>
+                                </div>
+                                <ul class="text-sm font-medium text-slate-600 space-y-3 mb-6 flex-grow">
+                                    <li class="flex items-center justify-between border-b border-slate-50 pb-2">
+                                        <span class="text-slate-500">Timing Duration:</span>
+                                        <span class="font-bold text-slate-800">15 Days</span>
+                                    </li>
+                                    <li class="flex items-center justify-between border-b border-slate-50 pb-2">
+                                        <span class="text-slate-500">Salary Amount:</span>
+                                        <span class="font-bold text-slate-800">₹45,000</span>
+                                    </li>
+                                    <li class="flex items-center justify-between border-b border-slate-50 pb-2">
+                                        <span class="text-slate-500">Registration Fees:</span>
+                                        <span class="font-bold text-accent">₹1299</span>
+                                    </li>
+                                    <li class="flex items-center justify-between border-b border-slate-50 pb-2">
+                                        <span class="text-slate-500">Daily Earning:</span>
+                                        <span class="font-bold text-slate-800">₹7,000+</span>
+                                    </li>
+                                    <li class="flex items-center justify-between pb-2">
+                                        <span class="text-slate-500">Weekly Earning:</span>
+                                        <span class="font-bold text-slate-800">₹50,000+</span>
+                                    </li>
+                                </ul>
+                                <button onclick="trackAndRedirect('Proj_3')" class="w-full py-3.5 bg-telegram text-white text-sm font-bold rounded-xl flex items-center justify-center gap-2 shadow-md hover:bg-blue-500 transition-colors">
+                                    <i class="fab fa-telegram-plane"></i> Select via Telegram
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination mt-4"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Badges & Sliders (Videos & Certs) -->
+        <section class="py-10 px-4 max-w-7xl mx-auto space-y-12 reveal w-full backdrop-blur-sm bg-white/40">
+            
+            <!-- Grid Trust Badges -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-soft flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center"><i class="fas fa-lock text-primary"></i></div><div><h4 class="text-xs font-bold text-slate-900">100% Secure</h4><p class="text-[10px] text-slate-500">Data Safe</p></div></div>
+                <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-soft flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center"><i class="fas fa-undo text-accent"></i></div><div><h4 class="text-xs font-bold text-slate-900">Full Refund</h4><p class="text-[10px] text-slate-500">Reg. Fees</p></div></div>
+                <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-soft flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center"><i class="fas fa-certificate text-secondary"></i></div><div><h4 class="text-xs font-bold text-slate-900">ISO Certified</h4><p class="text-[10px] text-slate-500">Global Std</p></div></div>
+                <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-soft flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-sky-50 flex items-center justify-center"><i class="fas fa-headset text-telegram"></i></div><div><h4 class="text-xs font-bold text-slate-900">24/7 Support</h4><p class="text-[10px] text-slate-500">Live Help</p></div></div>
+            </div>
+
+            <!-- Video Swiper with Thumbnails -->
+            <div class="w-full relative">
+                <h2 class="text-lg font-extrabold text-slate-900 mb-4 px-2">Verified Testimonials</h2>
+                <div class="swiper mediaSlider w-full">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide w-[75vw] max-w-[280px]">
+                            <div class="bg-black rounded-xl overflow-hidden shadow-md">
+                                <video controls poster="photo-1522202176988-66273c2fd55f.jpg" class="w-full h-44 object-cover"><source src="image/video/1.mp4" type="video/mp4"></video>
+                            </div>
+                        </div>
+                        <div class="swiper-slide w-[75vw] max-w-[280px]">
+                            <div class="bg-black rounded-xl overflow-hidden shadow-md">
+                                <video controls poster="image/seller-img.jpg" class="w-full h-44 object-cover"><source src="image/video/2.mp4" type="video/mp4"></video>
+                            </div>
+                        </div>
+                        <div class="swiper-slide w-[75vw] max-w-[280px]">
+                            <div class="bg-black rounded-xl overflow-hidden shadow-md">
+                                <video controls poster="photo-1455390582262-044cdead277a-auto-format-fit-crop-w-800-q-80.jpg" class="w-full h-44 object-cover"><source src="https://vishavbookpublication.com/image/video/video-3.mp4" type="video/mp4"></video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificate Swiper -->
+            <div class="w-full relative">
+                <h2 class="text-lg font-extrabold text-slate-900 mb-4 px-2">Official Documents</h2>
+                <div class="swiper certSlider w-full">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide w-[45vw] max-w-[180px]">
+                            <img src="../vishavbookpublication.com/image/GlobalBooksPublication%20(1).jpeg" class="w-full h-auto rounded-lg border border-slate-200 shadow-sm" onerror="this.style.display='none'">
+                        </div>
+                        <div class="swiper-slide w-[45vw] max-w-[180px]">
+                            <img src="../vishavbookpublication.com/image/GlobalBooksPublication%20(1).png" class="w-full h-auto rounded-lg border border-slate-200 shadow-sm" onerror="this.style.display='none'">
+                        </div>
+                        <div class="swiper-slide w-[45vw] max-w-[180px]">
+                            <img src="../vishavbookpublication.com/image/GlobalBooksPublication%20(3).jpeg" class="w-full h-auto rounded-lg border border-slate-200 shadow-sm" onerror="this.style.display='none'">
+                        </div>
+                        <div class="swiper-slide w-[45vw] max-w-[180px]">
+                            <img src="../vishavbookpublication.com/image/gbp.png" class="w-full h-auto rounded-lg border border-slate-200 shadow-sm" onerror="this.style.display='none'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Book Slider & Reviews Grid -->
+        <section class="py-10 bg-white/60 border-t border-slate-200 reveal w-full backdrop-blur-md">
+            <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center w-full">
+                
+                <!-- 3D Book Swiper -->
+                <div class="w-full overflow-hidden">
+                    <h2 class="text-lg font-extrabold text-slate-900 text-center mb-6">Our Published Portfolio</h2>
+                    <div class="swiper bookSlider w-full py-4">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="image/books/1.png" onerror="this.src='https://via.placeholder.com/200x300/1e3a8a/fff?text=Book'"></div>
+                            <div class="swiper-slide"><img src="image/books/2.png" onerror="this.src='https://via.placeholder.com/200x300/1e3a8a/fff?text=Book'"></div>
+                            <div class="swiper-slide"><img src="image/books/3.png" onerror="this.src='https://via.placeholder.com/200x300/1e3a8a/fff?text=Book'"></div>
+                            <div class="swiper-slide"><img src="image/books/4.png" onerror="this.src='https://via.placeholder.com/200x300/1e3a8a/fff?text=Book'"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reviews Marquee -->
+                <div class="w-full h-[280px] overflow-hidden bg-white border border-slate-200 rounded-2xl p-4 relative shadow-inner">
+                    <div class="absolute top-0 left-0 w-full h-12 bg-gradient-to-b from-white to-transparent z-10"></div>
+                    <div class="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-white to-transparent z-10"></div>
+                    <div id="reviewBox" class="space-y-3 animate-scroll"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXACT ORIGINAL MAP CODE RESTORED -->
+        <div class="reveal w-full">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d202041.08389221638!2d72.87835265000001!3d19.081507449999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e1!3m2!1sen!2sin!4v1775471515551!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+    </main>
+    
+    <!-- Professional Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 px-6 pb-24 md:pb-8 w-full overflow-hidden">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+            <div class="flex items-center gap-3">
+                <img src="image/stiyamav%20jaite.png" class="h-10 w-auto brightness-0 invert opacity-50" alt="Gov">
+                <div>
+                    <span class="text-white text-sm font-bold block leading-tight mb-1">VISHAV BOOK PUBLICATION PVT. LTD.</span>
+                    <span class="text-[10px] tracking-wider uppercase">ISO 9001:2015 Certified Work From Home</span>
+                </div>
+            </div>
+            <div class="flex gap-6 text-xs uppercase tracking-wider font-bold">
+                <a href="#" class="hover:text-white transition-colors">Privacy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms</a>
+                <span>© 2024</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Glowing Sticky CTA (Mobile) -->
+    <div class="fixed bottom-0 left-0 w-full p-3 bg-white/95 backdrop-blur-md border-t border-slate-200 z-[100] md:hidden shadow-[0_-10px_20px_rgba(0,0,0,0.08)]">
+        <button onclick="trackAndRedirect('Sticky_CTA')" class="w-full py-3.5 bg-telegram text-white text-base font-bold rounded-xl shadow-lg shadow-blue-500/30 flex justify-center items-center gap-2 active:scale-95 transition-transform">
+            <i class="fab fa-telegram-plane text-xl"></i> Official Telegram Support
+        </button>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // 1. Pixel Tracking & Redirect
+        function trackAndRedirect(btnId) {
+            if (typeof fbq === 'function') {
+                fbq('track', 'Lead', { content_category: btnId });
+            }
+            setTimeout(() => { window.location.href = 'https://t.me/vishav_publication'; }, 300);
+        }
+
+        // 2. Scroll Animation Init
+        window.addEventListener('scroll', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            const wh = window.innerHeight;
+            reveals.forEach(r => {
+                if (r.getBoundingClientRect().top < wh - 30) r.classList.add('active');
+            });
+        });
+
+        // 3. Robust Swiper Initializations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Project Slider
+            new Swiper(".projectSlider", {
+                slidesPerView: "auto",
+                spaceBetween: 16,
+                centeredSlides: true,
+                loop: false, 
+                pagination: { el: ".swiper-pagination", clickable: true },
+                autoplay: { delay: 4000, disableOnInteraction: true },
+                initialSlide: 1 
+            });
+
+            // Media & Cert Sliders
+            new Swiper(".mediaSlider", { slidesPerView: "auto", spaceBetween: 16, freeMode: true });
+            new Swiper(".certSlider", { slidesPerView: "auto", spaceBetween: 12, freeMode: true });
+
+            // 3D Books 
+            new Swiper(".bookSlider", {
+                effect: "coverflow", grabCursor: true, centeredSlides: true, slidesPerView: "auto", loop: true,
+                coverflowEffect: { rotate: 20, stretch: 0, depth: 150, modifier: 1, slideShadows: true },
+                autoplay: { delay: 2000, disableOnInteraction: false }
+            });
+
+            window.dispatchEvent(new Event('scroll'));
+        });
+
+        // 4. Live Social Proof
+        const toastNames = ["Amit S.", "Neha V.", "Pooja K.", "Vikram", "Suresh M.", "Anjali", "Rohan", "Kavita D."];
+        const toastActions = ["joined the channel", "selected Standard Plan", "completed registration", "started writing"];
+        
+        function showToast() {
+            const toast = document.getElementById('liveToast');
+            document.getElementById('toastName').textContent = toastNames[Math.floor(Math.random() * toastNames.length)];
+            document.getElementById('toastAction').textContent = toastActions[Math.floor(Math.random() * toastActions.length)];
+            
+            toast.classList.remove('toast-enter');
+            toast.classList.add('toast-active');
+            
+            setTimeout(() => {
+                toast.classList.remove('toast-active');
+                toast.classList.add('toast-enter');
+            }, 3500);
+        }
+        
+        setTimeout(() => {
+            showToast();
+            setInterval(showToast, 12000);
+        }, 2000);
+
+        // 5. Automated Reviews
+        const revContainer = document.getElementById("reviewBox");
+        const revs = [
+            {n: "Aarav Singh", t: "Payments are processed strictly on time. Best remote project."},
+            {n: "Priya Verma", t: "Very professional workflow. Telegram support is instant."},
+            {n: "Neha Gupta", t: "Registration process was seamless. Great management."},
+            {n: "Rohan K.", t: "100% genuine operations. Working kit arrived quickly."},
+            {n: "Vikram M.", t: "Clear project guidelines and secure environment."}
+        ];
+        let html = '';
+        for(let i=0; i<12; i++) {
+            let r = revs[i % revs.length];
+            html += `<div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex gap-3"><div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-sm font-bold text-primary shrink-0 border border-blue-100">${r.n[0]}</div><div><p class="text-sm font-bold text-slate-800 leading-tight mb-1">${r.n}</p><p class="text-xs text-slate-500 leading-snug">${r.t}</p></div></div>`;
+        }
+        revContainer.innerHTML = html + html; 
+    </script>
+</body>
+</html>
